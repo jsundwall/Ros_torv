@@ -157,4 +157,4 @@ app.use('/api', apiRouter);
 // START THE SERVER
 // =============================================================================
 app.listen(config.port);
-console.log('Magic happens on port ' + config.port);
+console.log('Server opened at localhost: ' + config.port);
