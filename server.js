@@ -46,7 +46,7 @@ var apiRouter = express.Router();
 apiRouter.use(function(req, res, next) {
 	// do logging
 	// Change to some meaningful logging
-	console.log('Somebody just came to our app!');
+	console.log('A user accessed the API');
 
 	next(); // make sure we go to the next routes and don't stop here
 });
@@ -55,7 +55,7 @@ apiRouter.use(function(req, res, next) {
 // accessed at GET http://localhost:8080/api
 // Also change to some meaningful logging
 apiRouter.get('/', function(req, res) {
-	res.json({ message: 'hooray! welcome to our api!' });
+	res.json({ message: 'Welcome to Jungle API' });
 });
 
 // on routes that end in /users
@@ -78,13 +78,13 @@ apiRouter.route('/users')
 			if (err) {
 				// duplicate entry
 				if (err.code == 11000)
-					return res.json({ success: false, message: 'A user with that username already exists. '});
+					return res.json({ success: false, message: 'A user with that username already exists, Please choose another username '});
 				else
 					return res.send(err);
 			}
 
 			// return a message
-			res.json({ message: 'User created!' });
+			res.json({ message: 'User Successfully created!' });
 		});
 
 	})
@@ -122,10 +122,10 @@ apiRouter.route('/users/:user_id')
 			if (err) return res.send(err);
 
 			// set the new user information if it exists in the request
-			// Include achievements
-			if (req.body.name) user.name = req.body.name;
-			if (req.body.username) user.username = req.body.username;
-			if (req.body.password) user.password = req.body.password;
+			if (req.body.name) user.name = req.body.name;								// Change name of the user
+			if (req.body.username) user.username = req.body.username;		// Change username
+			if (req.body.password) user.password = req.body.password;		// Change the password
+			if (req.body.reward) user.reward = req.body.reward;					// Change the reward of the user
 
 			// save the user
 			user.save(function(err) {
