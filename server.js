@@ -155,7 +155,6 @@ apiRouter.route('/users/:user_id')
 app.use('/api', apiRouter);
 
 // START THE SERVER
-// Leave this stuff here!
 // =============================================================================
 app.listen(config.port);
 console.log('Magic happens on port ' + config.port);
