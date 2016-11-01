@@ -58,89 +58,6 @@ apiRouter.get('/', function(req, res) {
 	res.json({ message: 'hooray! welcome to our api!' });
 });
 
-// on routes that end in /cars
-// NO LONGER NEEDED!!
-// ----------------------------------------------------
-apiRouter.route('/cars')
-
-	// create a car
-	.post(function(req, res) {
-
-		var car = new Car();
-		car.name = req.body.name;
-		car.model = req.body.model;
-		car.carYear = req.body.carYear;
-        car.kilometers = req.body.kilometers;
-        car.carService = req.body.carService;
-
-		car.save(function(err) {
-
-			// return a message
-			res.json({ message: 'Car has been added to the database!' });
-		});
-
-	})
-
-	.get(function(req, res) {
-		Car.find(function(err, cars) {
-			if (err) return res.send(err);
-
-			// return the cars
-			res.json(cars);
-		});
-	});
-
-
-// on routes that end in /cars/:car_id
-// NO LONGER NEEDED!!
-// ----------------------------------------------------
-apiRouter.route('/cars/:car_id')
-
-	// get the car with that id
-	.get(function(req, res) {
-		Car.findById(req.params.car_id, function(err, car) {
-			if (err) return res.send(err);
-
-			// return that car
-			res.json(car);
-		});
-	})
-
-	// update the car with this id
-	.put(function(req, res) {
-		Car.findById(req.params.car_id, function(err, car) {
-
-			if (err) return res.send(err);
-
-			// set the new car information if it exists in the request
-			if (req.body.name) car.name = req.body.name;
-			if (req.body.model) car.model = req.body.model;
-            if (req.body.carYear) car.carYear = req.body.carYear;
-            if (req.body.kilometers) car.kilometers = req.body.kilometers;
-            if (req.body.carService) car.carService = req.body.carService;
-
-			// save the car
-			car.save(function(err) {
-				if (err) return res.send(err);
-
-				// return a message
-				res.json({ message: 'Car information has been updated!' });
-			});
-
-		});
-	})
-
-	// delete the car with this id
-	.delete(function(req, res) {
-		Car.remove({
-			_id: req.params.car_id
-		}, function(err, car) {
-			if (err) return res.send(err);
-
-			res.json({ message: 'Successfully deleted' });
-		});
-	});
-
 // on routes that end in /users
 // Keep this!
 // ----------------------------------------------------
@@ -155,6 +72,7 @@ apiRouter.route('/users')
 		user.name = req.body.name;  // set the users name (comes from the request)
 		user.username = req.body.username;  // set the users username (comes from the request)
 		user.password = req.body.password;  // set the users password (comes from the request)
+		user.reward = req.body.reward; //set the users reward (comes from the request)
 
 		user.save(function(err) {
 			if (err) {
