@@ -5,6 +5,7 @@
     "bcrypt-nodejs": "latest",
     "body-parser": "latest",
     "express": "latest",
+    "jsonwebtoken": "latest",
     "mongoose": "latest",
     "morgan": "latest"
   }

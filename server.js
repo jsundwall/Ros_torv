@@ -7,6 +7,7 @@ var app        = express(); 									// define our app using express
 var bodyParser = require('body-parser'); 			// get body-parser
 var morgan     = require('morgan'); 					// used to see requests
 var mongoose   = require('mongoose');					// Used to call the database
+var jwt				 = require('jsonwebtoken')			// Used to call jwt for Authentication
 var User       = require('./app/models/user')	// Used to call the user.js
 var config     = require('./config')					// Config file with info for DB and Port
 
@@ -56,6 +57,55 @@ apiRouter.use(function(req, res, next) {
 // Also change to some meaningful logging
 apiRouter.get('/', function(req, res) {
 	res.json({ message: 'Welcome to Jungle API' });
+});
+
+// Route for authentication
+apiRouter.post('/authenticate', function(req, res) {
+
+	// Find the username
+	// Select the name username and password explicitly
+	User.findOne({
+		username: req.body.username
+	}).select('name username password').exec(function(err, user) {
+
+		if(err) throw err;
+
+		// No user with that username found
+		if(!user) {
+			res.json({
+				success: false,
+				message: 'Authentication failed. User not found.'
+			});
+		} else if (user) {
+
+			// Check if password matches
+			var validPassword = user.comparePassword(req.body.password);
+
+			// If password is incorrect
+			if (!validPassword) {
+				res.json({
+					succes: false,
+					message: 'Authentication failed. Password was incorrect'
+				});
+			} else {
+
+				// If user is found and password matches
+				var token = jwt.sign({
+					name: user.name,
+					username: user.username,
+				}, config.superSecret, {
+					// expiresIn: 1440
+				});
+
+				// return the information including token as JSON
+				res.json({
+					success: true,
+					message: 'Token generated!',
+					token: token
+				});
+			}
+		}
+	});
 });
 
 // on routes that end in /users
@@ -157,4 +207,4 @@ app.use('/api', apiRouter);
 // START THE SERVER
 // =============================================================================
 app.listen(config.port);
-console.log('Server opened at localhost: ' + config.port);
+console.log('Server opened at localhost:' + config.port);
