@@ -175,14 +175,14 @@ apiRouter.route('/users/:user_id')
 			if (req.body.name) user.name = req.body.name;								// Change name of the user
 			if (req.body.username) user.username = req.body.username;		// Change username
 			if (req.body.password) user.password = req.body.password;		// Change the password
-			if (req.body.reward) user.reward = req.body.reward;					// Change the reward of the user
+			if (req.body.reward) user.reward = req.body.reward;					// Change users reward points
 
 			// save the user
 			user.save(function(err) {
 				if (err) return res.send(err);
 
 				// return a message
-				res.json({ message: 'User updated!' });
+				res.json({ message: 'User Successfully updated!' });
 			});
 
 		});
@@ -196,7 +196,7 @@ apiRouter.route('/users/:user_id')
 		}, function(err, user) {
 			if (err) return res.send(err);
 
-			res.json({ message: 'Successfully deleted' });
+			res.json({ message: 'User Successfully deleted' });
 		});
 	});
 
