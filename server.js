@@ -10,7 +10,7 @@ var methodOverride = require('method-override');
 // config files
 var db = require('./config/db');
 
-var port = process.env.PORT || 8080; // set our port
+var port = process.env.PORT || 8000; // set our port
 
 mongoose.connect(db.url)
 
