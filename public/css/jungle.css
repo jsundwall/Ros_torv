@@ -1,0 +1,126 @@
+.game-container{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_login.png);
+}
+.game-container-1{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_afterlogin.png);
+}
+.game-container-2{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_mapone.png);
+}
+.game-container-3{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_maptwo.png);
+}
+.game-container-4{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_fishgame.png);
+}
+.game-container-5{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_bananacatcher.png);
+}
+.game-container-6{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_achievements.png);
+}
+.game-container-7{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_settings.png);
+}
+.game-container-8{
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+	height:711px;
+	background-image: url(../img/jg_register.png);
+}
+.login{
+	width:250px;
+	height:63px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:7px;
+}
+.menuoption{
+	width:250px;
+	height:53px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:13px;
+}
+#pusher{
+	width:400px;
+	height:235px;
+}
+#pusher_two{
+	width:400px;
+	height:159px;
+}
+#pusher_three{
+	width:400px;
+	height:322px;
+}
+#button_mapone{
+	width:30px;
+	height:30px;
+	margin-left:40px;
+}
+#button_maptwo{
+	width:30px;
+	height:30px;
+	margin-top:63px;
+	margin-left:277px;
+}
+#button_mapthree{
+	width:30px;
+	height:30px;
+	margin-top:301px;
+	margin-left:304px;
+}
+#button_mapfix{
+	width:30px;
+	height:30px;
+	margin-left:179px;
+}
+#button_menu{
+	width:158px;
+	height:41px;
+}
+#button_menu_two{
+	width:158px;
+	height:41px;
+	margin-top:257px;
+}
+#goback{
+width:30px;
+height:30px;
+margin-left:10px;
+}
+	
